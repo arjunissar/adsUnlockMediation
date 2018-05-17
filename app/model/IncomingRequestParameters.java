@@ -4,21 +4,28 @@ package model;
  */
 public class IncomingRequestParameters {
 
-    String mRequestType;
+
+
+//    String mSdkType;
+//    String mSdkVersion;
+//    String mMraid;
+//    String mT;
+
+    String mCountryCode;
     String mLongitude;
     String mLatitude;
     String mUserAgentInfo;
     String mUserAgentExtraInfo;
     String mPlacementId;
-    String mSdkType;
+    int mRefreshRate;
     String mImei1;
-    String mSdkVersion;
     String mIpAddress;
-    String mMraid;
     String mConnectionType;
     String mImei2;
-    String mT;
-    String mListAds;
+    String mRequestType;
+    int mCategory;
+    int mWidth;
+    int mHeight;
 
     public String getRequestType() {
         return mRequestType;
@@ -68,13 +75,13 @@ public class IncomingRequestParameters {
         this.mPlacementId = placementId;
     }
 
-    public String getSdkType() {
-        return mSdkType;
-    }
+//    public String getSdkType() {
+//        return mSdkType;
+//    }
 
-    public void setSdkType(String sdkType) {
-        this.mSdkType = sdkType;
-    }
+//    public void setSdkType(String sdkType) {
+//        this.mSdkType = sdkType;
+//    }
 
     public String getImei1() {
         return mImei1;
@@ -84,13 +91,13 @@ public class IncomingRequestParameters {
         this.mImei1 = imei1;
     }
 
-    public String getSdkVersion() {
-        return mSdkVersion;
-    }
+//    public String getSdkVersion() {
+//        return mSdkVersion;
+//    }
 
-    public void setSdkVersion(String sdkVersion) {
-        this.mSdkVersion = sdkVersion;
-    }
+//    public void setSdkVersion(String sdkVersion) {
+//        this.mSdkVersion = sdkVersion;
+//    }
 
     public String getIpAddress() {
         return mIpAddress;
@@ -100,13 +107,13 @@ public class IncomingRequestParameters {
         this.mIpAddress = ipAddress;
     }
 
-    public String getMraid() {
-        return mMraid;
-    }
+//    public String getMraid() {
+//        return mMraid;
+//    }
 
-    public void setMraid(String mraid) {
-        this.mMraid = mraid;
-    }
+//    public void setMraid(String mraid) {
+//        this.mMraid = mraid;
+//    }
 
     public String getConnectionType() {
         return mConnectionType;
@@ -124,19 +131,60 @@ public class IncomingRequestParameters {
         this.mImei2 = imei2;
     }
 
-    public String getT() {
-        return mT;
+//    public String getT() {
+//        return mT;
+//    }
+
+//    public void setT(String t) {
+//        this.mT = t;
+//    }
+
+//    public String getListAds() {
+//        return mListAds;
+//    }
+
+//    public void setListAds(String listAds) {
+//        this.mListAds = listAds;
+//    }
+
+
+    public String getCountryCode() {
+        return mCountryCode;
     }
 
-    public void setT(String t) {
-        this.mT = t;
+    public void setCountryCode(String countryCode) {
+        this.mCountryCode = countryCode;
     }
 
-    public String getListAds() {
-        return mListAds;
+    public int getRefreshRate() {
+        return mRefreshRate;
     }
 
-    public void setListAds(String listAds) {
-        this.mListAds = listAds;
+    public void setRefreshRate(int refreshRate) {
+        this.mRefreshRate = refreshRate;
+    }
+
+    public int getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(int category) {
+        this.mCategory = category;
+    }
+
+    public int getWidth() {
+        return mWidth;
+    }
+
+    public void setWidth(int width) {
+        this.mWidth = width;
+    }
+
+    public int getHeight() {
+        return mHeight;
+    }
+
+    public void setHeight(int height) {
+        this.mHeight = height;
     }
 }

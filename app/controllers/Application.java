@@ -3,7 +3,6 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import model.IncomingRequestParameters;
 import org.springframework.util.StreamUtils;
-import play.libs.Json;
 import play.mvc.*;
 
 import java.io.BufferedReader;
@@ -32,8 +31,8 @@ public class Application extends Controller {
 
         IncomingRequestParameters incomingParameters = new IncomingRequestParameters();
 
-        String request_type = json.get("rt").asText();
-        incomingParameters.setRequestType(request_type);
+        String countryCode = json.get("Country_code").asText();
+        incomingParameters.setCountryCode(countryCode);
 
         String longitude = json.get("longitude").asText();
         incomingParameters.setLongitude(longitude);
@@ -50,20 +49,23 @@ public class Application extends Controller {
         String placementId = json.get("s").asText();
         incomingParameters.setPlacementId(placementId);
 
-        String sdkType = json.get("sdk").asText();
-        incomingParameters.setSdkType(sdkType);
+//        String sdkType = json.get("sdk").asText();
+//        incomingParameters.setSdkType(sdkType);
+
+        int refreshRate = json.get("Refresh_rate").asInt();
+        incomingParameters.setRefreshRate(refreshRate);
 
         String imei = json.get("o").asText();
         incomingParameters.setImei1(imei);
 
-        String sdkVersion = json.get("v").asText();
-        incomingParameters.setSdkVersion(sdkVersion);
+//        String sdkVersion = json.get("v").asText();
+//        incomingParameters.setSdkVersion(sdkVersion);
 
         String ipAddress = json.get("i").asText();
         incomingParameters.setIpAddress(ipAddress);
 
-        String mraid = json.get("c.mraid").asText();
-        incomingParameters.setMraid(mraid);
+//        String mraid = json.get("c.mraid").asText();
+//        incomingParameters.setMraid(mraid);
 
         String connectionType = json.get("connection_type").asText();
         incomingParameters.setConnectionType(connectionType);
@@ -71,11 +73,23 @@ public class Application extends Controller {
         String imei2 = json.get("o2").asText();
         incomingParameters.setImei2(imei2);
 
-        String t = json.get("t").asText();
-        incomingParameters.setT(t);
+        int category = json.get("category").asInt();
+        incomingParameters.setCategory(category);
 
-        String listAds = json.get("listads").asText();
-        incomingParameters.setListAds(listAds);
+//        String t = json.get("t").asText();
+//        incomingParameters.setT(t);
+
+//        String listAds = json.get("listads").asText();
+//        incomingParameters.setListAds(listAds);
+
+        String request_type = json.get("Req_type").asText();
+        incomingParameters.setRequestType(request_type);
+
+        int width = json.get("width").asInt();
+        incomingParameters.setWidth(width);
+
+        int height = json.get("height").asInt();
+        incomingParameters.setHeight(height);
 
         String response= "";
         String priority = "ADSCEND";
@@ -126,26 +140,26 @@ public class Application extends Controller {
 
                     // Append to the URL string
                     String lUrl = "https://advertiser.adsunlock.com/md.adnetwork.php?";
-                    lUrl += "country_code=IN";
+                    lUrl += "country_code="+incomingParameters.getCountryCode();
                     lUrl += "&longitude="+incomingParameters.getLongitude();
                     lUrl += "&latitude="+incomingParameters.getLatitude();
                     lUrl += "&i="+incomingParameters.getIpAddress();
                     lUrl += "&u="+incomingParameters.getUserAgentInfo();
                     lUrl += "&o="+incomingParameters.getImei1();
                     lUrl += "&o2="+incomingParameters.getImei2();
-                    lUrl += "&t="+incomingParameters.getT();
+                    lUrl += "&t=0";
                     lUrl += "&connection_type="+incomingParameters.getConnectionType();
                     lUrl += "&os=android_app";
                     lUrl += "&device_type=Smartphone" +
                             "&device_brand=Samsung" +
                             "&device_model=sm-12345" +
                             "&req_user_id=example@gmail.com" +
-                            "&device_resolution=1209*345" +
-                            "&req_type=banner" +
-                            "&width=320" +
-                            "&height=50" +
-                            "&refresh_rate=30" +
-                            "&category=4";
+                            "&device_resolution=1209*345";
+                    lUrl += "&req_type="+incomingParameters.getRequestType();
+                    lUrl += "&width="+incomingParameters.getWidth();
+                    lUrl += "&height="+incomingParameters.getHeight();
+                    lUrl += "&refresh_rate="+incomingParameters.getRefreshRate();
+                    lUrl += "&category="+incomingParameters.getCategory();
 
                     System.out.println("BUILT URL :" +lUrl);
 
